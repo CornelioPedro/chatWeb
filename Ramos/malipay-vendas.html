@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <script src="https://unpkg.com/vue@3"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MaliPay</title>
+    <meta name="author" content="Ramos D Sambo">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://mali-tech.sirv.com/Images/malipay.vendas20220319071611.jpg">
+    <meta name="application-name" content="MaliPay">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css" integrity="sha512-xX2rYBFJSj86W54Fyv1de80DWBq7zYLn2z0I9bIhQG+rxIF6XVJUpdGnsNHWRa6AvP89vtFupEPDP8eZAtu9qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Main CSS File -->
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="">
+    <div id="app" class="page-wrapper">
+        <main class="main container-c">
+          <!-- <div class="d-flex">
+            <div class="icon-right ml-auto mr-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 127.1C448 181 405 223.1 352 223.1C326.1 223.1 302.6 213.8 285.4 197.1L191.3 244.1C191.8 248 191.1 251.1 191.1 256C191.1 260 191.8 263.1 191.3 267.9L285.4 314.9C302.6 298.2 326.1 288 352 288C405 288 448 330.1 448 384C448 437 405 480 352 480C298.1 480 256 437 256 384C256 379.1 256.2 376 256.7 372.1L162.6 325.1C145.4 341.8 121.9 352 96 352C42.98 352 0 309 0 256C0 202.1 42.98 160 96 160C121.9 160 145.4 170.2 162.6 186.9L256.7 139.9C256.2 135.1 256 132 256 128C256 74.98 298.1 32 352 32C405 32 448 74.98 448 128L448 127.1zM95.1 287.1C113.7 287.1 127.1 273.7 127.1 255.1C127.1 238.3 113.7 223.1 95.1 223.1C78.33 223.1 63.1 238.3 63.1 255.1C63.1 273.7 78.33 287.1 95.1 287.1zM352 95.1C334.3 95.1 320 110.3 320 127.1C320 145.7 334.3 159.1 352 159.1C369.7 159.1 384 145.7 384 127.1C384 110.3 369.7 95.1 352 95.1zM352 416C369.7 416 384 401.7 384 384C384 366.3 369.7 352 352 352C334.3 352 320 366.3 320 384C320 401.7 334.3 416 352 416z"/></svg>                
+            </div>
+          </div> -->
+
+          <div class="col-12 mt-5 m-logo d-flex justify-content-center">
+            <div class="logo mb-4"></div>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <strong class="h4 malipaycolor">MaliPay</strong>
+            
+          </div>
+          <div class="col-12 justify-content-center text-center malipaycolor2">
+              Serviços Financeiros com Amor.<br>
+              <span class="avoidwrap"> Venda de Eletrônicos</span> <span class="avoidwrap">em Prestações Mensais.</span>
+              <span class="sr-only">
+              <br>Note: Por favor leia a descrição do Item antes de Comprar.<br>PRESTAÇÕES MENSAIS!
+              </span>
+          </div>
+
+          <div class="m-search mt-4">
+            <div class='search-box'>
+              <form class='search-form'>
+                <input class='form-control mb-0 search-c' v-model="search" id="searchi" placeholder='Buscar...' type='search'>
+                <div class='btn btn-link search-btn search-btn-c'>
+                  <i class="icon-search"></i>
+                  <!-- <i class='glyphicon glyphicon-search'></i> -->
+                </div>
+              </form>
+            </div>
+            <div class="tbm shadow sr-only">
+              <table class="table" id="myTable">
+              <!-- <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+              </thead -->
+              <tbody>
+                <tr v-for="product in filteredProducts" :key="product.id">
+                    <!-- <td>{{ product.id }}</td> -->
+                    <td class="clickable" v-on:click="productSelected(product.id)">{{ product.name }}</td>
+                </tr>
+              </tbody>
+             </table>
+            </div>
+          </div>
+
+          <div class="scrollmenu mt-4">
+            <span class="clickable tnav active" id="content-iphone-nav" v-on:click="tabcontent('#content-iphone')">iPhone</span>
+            <span class="clickable tnav" id="content-infinix-nav" v-on:click="tabcontent('#content-infinix')">Infinix</span>
+            <span class="clickable tnav" id="content-itel-nav" v-on:click="tabcontent('#content-itel')">Itel Phones</span>
+            <span class="clickable tnav" id="content-vivo-nav" v-on:click="tabcontent('#content-vivo')">Vivo Phones</span>
+          </div>
+          <div class="tabcontent mt-3">
+            <div class="tcont active" id="content-iphone">
+              <div class="owl-carousel">
+                <div class="card p-0 mx-2 shadow rounded overflow-hidden" v-for="product in filteredProductsIphone" :key="product.id">
+                  <div class="clickable" v-on:click="productSelected(product.id)">
+                    <div class="img-thumbnail img-square mx-2 mt-2 fixed-ar fixed-ar-1-1">
+                      <img class="card-img-top" :src="product.url" alt="Card image cap">
+                    </div>
+                    <div class="text-center mt-4">
+                      <div class="h6 p-name"><strong>{{ product.name }}</strong></div>
+                      <div class="h5 p-price"><strong>{{ formatPrice(product.prestacao) }}MT</strong></div>
+                      <div class="p-price-c mb-2"><strong>/Mes ate 6X</strong></div>
+                    </div>
+                    <div class="btn btn-block p-add small-btn-c">Comprar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tcont" id="content-infinix">
+              <div class="owl-carousel">
+                <div class="card p-0 mx-2 shadow rounded overflow-hidden" v-for="product in filteredProductsInfinix" :key="product.id">
+                  <div class="clickable" v-on:click="productSelected(product.id)">
+                    <div class="img-thumbnail img-square mx-2 mt-2 fixed-ar fixed-ar-1-1">
+                      <img class="card-img-top" :src="product.url" alt="Card image cap">
+                    </div>
+                    <div class="text-center mt-4">
+                      <div class="h6 p-name"><strong>{{ product.name }}</strong></div>
+                      <div class="h5 p-price"><strong>{{ formatPrice(product.prestacao) }}MT</strong></div>
+                      <div class="p-price-c mb-2"><strong>/Mes ate 6X</strong></div>
+                    </div>
+                    <div class="btn btn-block p-add small-btn-c">Comprar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tcont" id="content-itel">
+              <div class="owl-carousel">
+                <div class="card p-0 mx-2 shadow rounded overflow-hidden" v-for="product in filteredProductsItel" :key="product.id">
+                  <div class="clickable" v-on:click="productSelected(product.id)">
+                    <div class="img-thumbnail img-square mx-2 mt-2 fixed-ar fixed-ar-1-1">
+                      <img class="card-img-top" :src="product.url" alt="Card image cap">
+                    </div>
+                    <div class="text-center mt-4">
+                      <div class="h6 p-name"><strong>{{ product.name }}</strong></div>
+                      <div class="h5 p-price"><strong>{{ formatPrice(product.prestacao) }}MT</strong></div>
+                      <div class="p-price-c mb-2"><strong>/Mes ate 6X</strong></div>
+                    </div>
+                    <div class="btn btn-block p-add small-btn-c">Comprar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tcont" id="content-vivo">
+              <div class="owl-carousel">
+                <div class="card p-0 mx-2 shadow rounded overflow-hidden" v-for="product in filteredProductsVivo" :key="product.id">
+                  <div class="clickable" v-on:click="productSelected(product.id)">
+                    <div class="img-thumbnail img-square mx-2 mt-2 fixed-ar fixed-ar-1-1">
+                      <img class="card-img-top" :src="product.url" alt="Card image cap">
+                    </div>
+                    <div class="text-center mt-4">
+                      <div class="h6 p-name"><strong>{{ product.name }}</strong></div>
+                      <div class="h5 p-price"><strong>{{ formatPrice(product.prestacao) }}MT</strong></div>
+                      <div class="p-price-c mb-2"><strong>/Mes ate 6X</strong></div>
+                    </div>
+                    <div class="btn btn-block p-add small-btn-c">Comprar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center mt-5 mb-1 text-c">Fale Conosco:</p>
+          <div class="col-12 d-flex justify-content-center my-3 malicontact">
+             <a href="tel:+258874004040" class="a1">
+               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.1276 3.1671L16.4651 0.507437C16.1401 0.182477 15.7051 0 15.2451 0C14.7851 0 14.3501 0.179978 14.0251 0.507437L11.1575 3.36958C10.8325 3.69454 10.65 4.13198 10.65 4.59193C10.65 5.05437 10.83 5.48681 11.1575 5.81427L13.3976 8.05649C12.8873 9.24531 12.1541 10.3255 11.2375 11.2386C10.32 12.161 9.24754 12.8884 8.05753 13.4033L5.81753 11.1611C5.49252 10.8361 5.05752 10.6537 4.59752 10.6537C4.37063 10.6528 4.14585 10.6973 3.93636 10.7844C3.72686 10.8715 3.53687 10.9996 3.37751 11.1611L0.507502 14.0232C0.182501 14.3482 0 14.7857 0 15.2456C0 15.708 0.180001 16.1405 0.507502 16.4679L3.16751 19.1276C3.72252 19.6825 4.48752 20 5.27252 20C5.43502 20 5.59252 19.9875 5.75253 19.96C9.06254 19.4151 12.3476 17.6528 15.0001 15.0031C17.6501 12.3485 19.4101 9.06387 19.9601 5.75178C20.1176 4.8119 19.8026 3.84452 19.1276 3.1671ZM18.1876 5.45432C17.7001 8.40145 16.1151 11.3411 13.7276 13.7283C11.34 16.1155 8.40254 17.7003 5.45502 18.1877C5.08502 18.2502 4.70502 18.1252 4.43502 17.8578L1.82251 15.2456L4.59252 12.4734L7.58753 15.4731L7.61003 15.4956L8.15003 15.2956C9.78736 14.6937 11.2742 13.743 12.5075 12.5094C13.7409 11.2758 14.6912 9.78881 15.2926 8.15148L15.4926 7.61155L12.4726 4.59443L15.2426 1.82227L17.8551 4.43445C18.1251 4.70441 18.2501 5.08436 18.1876 5.45432Z" fill="currentcolor"></path></svg></a>
+            <a href="mailto:vendas@mali-tech.co.za" class="a2">
+              <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 2C20 0.9 19.1 0 18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2ZM18 2L10 7L2 2H18ZM18 14H2V4L10 9L18 4V14Z" fill="currentcolor"></path></svg></a>                      
+          </div>
+          <a href="https://api.whatsapp.com/send?phone=258874004040&text=Ola,%20quero%20Comprar%20telemoveis" target="_blank" class="btn btn-block btn-outline-success btn-lg rounded-c">Whatsapp</a>
+          <a href="https://www.facebook.com/premiummali?_rdc=1&_rdr" target="_blank" class="btn btn-block btn-outline-info btn-lg rounded-c">Facebook</a>
+
+          <div class="modal fade" id="carrinho" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <button type="button" class="close d-flex" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="ml-auto">&times;</span>
+                </button>
+                <div class="modal-body">
+                  <div class="container-c px-md-5">
+                    <div class="col-12  mt-3 m-logo d-flex justify-content-center">
+                      <div class="logo mb-4"></div>
+                    </div>
+                    <form class="row ">
+                      <div class="col-md-7 px-4 px-md-0 bo">
+                        <div class="mr-md-3">
+                          <h2>Compra</h2>
+                          <div class="form-group">
+                            <!-- <label for="name">Nome</label> -->
+                            <input id="name" name="name" type="text" class="form-control" placeholder="Nome">
+                          </div>
+                          <div class="form-group">
+                            <!-- <label for="email">Email</label> -->
+                            <input id="email" name="email" type="text" class="form-control" placeholder="Email">
+                          </div>
+                          <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">+258</span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="Telefone" aria-label="Telefone" aria-describedby="basic-addon1">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <!-- <label for="idi">Email</label> -->
+                            <input id="idi" name="idi" type="text" class="form-control" placeholder="Codigo de Estudante">
+                          </div>
+                          <div class="form-group">
+                            <select class="form-control">
+                              <option selected>Instituicao de Ensino</option>
+                              <option value="1">UEM</option>
+                              <option value="2">UDM</option>
+                              <option value="3">USTM</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+                            <textarea class="form-control" id="observation" rows="1" placeholder="Observacao"></textarea>
+                          </div>
+                          <h5>Metodo de pagamento</h5>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="numerario" name="pagamento" class="custom-control-input">
+                            <label class="custom-control-label" for="numerario">Numerario</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="visa" name="pagamento" class="custom-control-input">
+                            <label class="custom-control-label" for="visa">Visa</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="mastercard" name="pagamento" class="custom-control-input">
+                            <label class="custom-control-label" for="mastercard">Mastercard</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-5 px-4 mt-4 px-md-0 mb-4">
+                        <div class="ml-md-3 mt-md-4">
+                          <div class="card shadow rounded">
+                            <div class="card-body">
+                              <h3 class="mt-4 text-center">Resumo do Pedido</h3>
+                              <div class="d-flex justify-content-between color-c">
+                                <div class="d-flex mt-3">
+                                  <figure class="img-order">
+                                    <img class="img-fluid" :src="selectedP()[0].url">
+                                  </figure>
+                                  <div class="mt-4 ml-3">
+                                    <div class="h6">{{ selectedP()[0].name }}</div>
+                                    <!-- <div class="remover-c">Remover</div> -->
+                                  </div>
+                                </div>
+                                <!-- <span class="d-block h6">{{ selectedP()[0].preco_inicial }}</span> -->
+                                <!-- <span class="d-block">SubTotal</span> -->
+                              </div>
+                              <div class="d-flex justify-content-between color-c">
+                                <span class="d-block">Preco Inicial</span><span class="d-block">{{ formatPrice(selectedP()[0].preco_inicial) }}</span>
+                              </div>
+                              <div class="d-flex justify-content-between color-c">
+                                <span class="d-block">Seguro</span><span class="d-block">{{ formatPrice(selectedP()[0].seguro) }}</span>
+                              </div>
+                              <div class="d-flex justify-content-between color-c">
+                                <span class="d-block">Entrega</span><span class="d-block">0.00</span>
+                              </div>
+                              <hr class="mx-4 mt-4 mb-4">
+                              <div class="d-flex justify-content-between color-c2">
+                                <span class="d-block h6">Total</span><span class="d-block h6">{{ formatPrice(selectedP()[0].preco_inicial+selectedP()[0].seguro) }}MT</span>
+                              </div>
+                            </div>
+                            <button class="btn btn-success btn-block btn-lg">Checkout</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="d-flex">
+                  <button type="button" class="close ml-auto mr-4" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body pt-3 container-c">
+                  <h3 class="text-center">Modalidade de Pagamento</h3>
+                  <figure class="fixed-ar fixed-ar-1-1">
+                      <img id="product-zoom" class="w-100" :src="selectedP()[0].url" alt="product image">
+                  </figure>
+                  <div class="px-5">
+                    <h4 class="mt-4">{{ selectedP()[0].name }}</h4>
+
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="pronto" name="fpagamento" class="custom-control-input">
+                      <label class="custom-control-label malipaycolor" for="pronto">Pronto Pagamento: {{ formatPrice(selectedP()[0].preco) }} Mt</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <input type="radio" id="prestacoes" name="fpagamento" class="custom-control-input">
+                      <label class="custom-control-label malipaycolor" for="prestacoes">Prestações: {{ formatPrice(selectedP()[0].prestacao) }} MT/Mes x 6 meses<br> Deposito Inicial: {{ formatPrice(selectedP()[0].preco_inicial) }} MT + {{ formatPrice(selectedP()[0].seguro) }} MT seguros</label>
+                    </div>
+                  </div>
+                  <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#carrinho" class="btn btn-block btn-lg btn-primary mt-4"><span>Avancar</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main><!-- End .main -->
+        <footer class="footer pt-5 bg-transparent ">
+            <p class="footer-copyright text-center">Copyright © 2022 Premiummali</p><!-- End .footer-copyright -->
+        </footer><!-- End .footer -->
+    </div><!-- End .page-wrapper -->
+</body>
+    <!-- Plugins JS File -->
+    <script type="text/javascript">
+      Vue.createApp({
+        data() {
+          return {
+            addcounter:0,
+            message: 'Hello Vue!',
+            products: [
+              {id: 1, categoria:"iPhone", name:"iPhone 6S", preco:11720, preco_inicial:2375, prestacao:2655, seguro:1188, url:"https://mali-tech.sirv.com/Images/iphone/iphone6s/malipay.vendas20220319071642_produ.jpg"},
+              {id: 2, categoria:"iPhone", name:"iPhone 7 128GB", preco:31320, preco_inicial:5510, prestacao:6155, seguro:2755, url:"https://mali-tech.sirv.com/Images/iphone/iphone7/malipay.vendas20220319072443_produ.jpg"},
+              {id: 3, categoria:"iPhone", name:"iPhone 13 128GB", preco:73440, preco_inicial:12620, prestacao:9620, seguro:6200, url:"https://mali-tech.sirv.com/Images/iphone/iphone13/malipay.vendas20220319075709_produ.jpg"},
+              {id: 4, categoria:"Infinix", name:"Infinix Smart HD", preco:6400, preco_inicial:1295, prestacao:1445, seguro:649, url:"https://mali-tech.sirv.com/Images/infinix/smarthd/vendasmalitech20220216014313_.jpg"},
+              {id: 5, categoria:"Infinix", name:"Infinix Smart 5", preco:7050, preco_inicial:1425, prestacao:1595, seguro:649, url:"https://mali-tech.sirv.com/Images/infinix/smart5/vendasmalitech20220216014108_.jpg"},
+              {id: 6, categoria:"Infinix", name:"Infinix HOT 10i", preco:7350, preco_inicial:1295, prestacao:1485, seguro:741, url:"https://mali-tech.sirv.com/Images/infinix/hot10i/vendasmalitech20220216013058_.jpg"},
+              {id: 7, categoria:"Infinix", name:"Infinix HOT Play", preco:9110, preco_inicial:1825, prestacao:2060, seguro:922, url:"https://mali-tech.sirv.com/Images/infinix/hotplay/vendasmalitech20220216013518_.jpg"},
+              {id: 8, categoria:"Infinix", name:"Infinix Note 11 Pro", preco:17874, preco_inicial:3610, prestacao:2690, seguro:1805, url:"https://mali-tech.sirv.com/Images/infinix/note11pro/malipay.vendas20220420081521_produ.jpg"},
+              {id: 9, categoria:"Itel", name:"Itel A37", preco:3985, preco_inicial:817, prestacao:912, seguro:409, url:"https://mali-tech.sirv.com/Images/itel/a37/malipay.vendas20220319064304_produ.jpg"},
+              {id: 10, categoria:"Itel", name:"Itel A56", preco:4625, preco_inicial:950, prestacao:1060, seguro:475, url:"https://mali-tech.sirv.com/Images/itel/a56/malipay.vendas20220319071922_produ.jpg"},
+              {id: 11, categoria:"Itel", name:"Itel S17", preco:5575, preco_inicial:1140, prestacao:1280, seguro:570, url:"https://mali-tech.sirv.com/Images/itel/s17/malipay.vendas20220319071850_produ.jpg"},
+              {id: 12, categoria:"Itel", name:"Itel A14", preco:6370, preco_inicial:1292, prestacao:1445, seguro:646, url:"https://mali-tech.sirv.com/Images/itel/a14/malipay.vendas20220319071758_produ.jpg"},
+              {id: 13, categoria:"Vivo", name:"Vivo Y20", preco:11880, preco_inicial:2090, prestacao:2335, seguro:1045, url:"https://mali-tech.sirv.com/Images/vivo/y20/malipay.vendas20220319064820_produ.jpg"},
+              {id: 14, categoria:"Vivo", name:"Vivo Y30", preco:15660, preco_inicial:2755, prestacao:3070, seguro:1380, url:"https://mali-tech.sirv.com/Images/vivo/y30/malipay.vendas20220319064936_produ.jpg"}
+            ],
+            pselected:1,
+            search: ""
+          }
+        },
+        methods: {
+          tabcontent: function (id) {
+            var navs = document.querySelectorAll(".tnav");
+            [].forEach.call(navs, function(el) {
+              el.classList.remove("active");
+            });
+
+            var nav = document.querySelector(id+"-nav");
+            if(nav !== null){
+              nav.className = "clickable tnav active";
+            }
+
+            var elems = document.querySelectorAll(".tcont");
+            [].forEach.call(elems, function(el) {
+              el.classList.remove("active");
+            });
+
+            var elem = document.querySelector(id);
+            if(elem !== null){
+              elem.className = "tcont active";
+            }
+          },
+          productSelected: function (id){
+            this.pselected = id;
+            $('#details').modal('show');
+          },
+          selectedP() {
+            return this.products.filter(p => {
+              return p.id==this.pselected;
+            });
+          },
+          formatPrice(value) {
+              let val = (value/1).toFixed(2);
+              //.replace('.', ',')
+              return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }
+        },
+        computed: {
+          filteredProducts() {
+            var ptds = this.products.filter(p => {
+              // return true if the product should be visible
+
+              // in this example we just check if the search string
+              // is a substring of the product name (case insensitive)
+              return p.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+            });
+            var tbm = document.querySelector(".tbm");
+            var si = document.querySelector("#searchi");
+
+            if(si!==null && si.value!=""){
+              if(ptds.length ==0){
+                if(tbm!==null){
+                  tbm.className = "tbm shadow sr-only";
+                }
+              } else {
+                if(tbm!==null){
+                  tbm.classList.remove("sr-only");
+                }
+              }
+            }
+            else{
+              if(tbm!==null){
+                  tbm.className = "tbm shadow sr-only";
+              }
+            }
+            return ptds;
+          },
+          filteredProductsIphone() {
+            var category = "iphone";
+            return this.products.filter(p => {
+              return p.categoria.toLowerCase().indexOf(category.toLowerCase()) != -1;
+            });
+          },
+          filteredProductsInfinix() {
+            var category = "infinix";
+            return this.products.filter(p => {
+              return p.categoria.toLowerCase().indexOf(category.toLowerCase()) != -1;
+            });
+          },
+          filteredProductsItel() {
+            var category = "itel";
+            return this.products.filter(p => {
+              return p.categoria.toLowerCase().indexOf(category.toLowerCase()) != -1;
+            });
+          },
+          filteredProductsVivo() {
+            var category = "vivo";
+            return this.products.filter(p => {
+              return p.categoria.toLowerCase().indexOf(category.toLowerCase()) != -1;
+            });
+          }
+        }
+      }).mount('#app');
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/fontawesome.min.js" integrity="sha512-5qbIAL4qJ/FSsWfIq5Pd0qbqoZpk5NcUVeAAREV2Li4EKzyJDEGlADHhHOSSCw0tHP7z3Q4hNHJXa81P92borQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Main JS File -->
+    <script src="js/main-c.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="js/owl.carousel.min.js"></script> -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+          loop:true,
+          items:2,
+          autoplay:true
+        });
+      });
+    </script>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register Agent</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="Pragma">
+    <meta content="0" http-equiv="Expires">
+    <!--===============================================================================================-->
+    <link href="images/icons/favicon.ico" rel="icon" type="image/png"/>
+    <!--===============================================================================================-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/animate/animate.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/animsition/css/animsition.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="css/util.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+</head>
+<body>
+<script th:inline="javascript">
+    let link = /*[[${link}]]*/
+</script>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-b-160 p-t-50">
+                	<span class="login100-form-title p-b-43" id="header_register" th:inline="text">
+						CONSULTOR AUTO REGISTRO
+					</span>
+
+            <form class="login100-form validate-form" th:object="${link}">
+
+                <div class="wrap-input100 rs1 validate-input" data-validate="Username is required">
+                    <input class="input100" disabled id="phone_number" name="username" type="text">
+                </div>
+
+                <div class="wrap-input100 rs2 validate-input" data-validate="username is required">
+                    <input class="input100" id="username" name="username" type="text">
+                    <span class="label-input100" id="username_text">Nome</span>
+                </div>
+
+                <div class="wrap-input100 rs2 validate-input" data-validate="surname is required">
+                    <input class="input100" id="surname" name="surname" type="text">
+                    <span class="label-input100" id="surname_text">Apelido</span>
+                </div>
+
+                <div class="wrap-input100 rs2 validate-input" data-validate="id number is required">
+                    <input class="input100" id="id_number" name="id_number" type="text">
+                    <span class="label-input100" id="id_number_text">Número do BI</span>
+                </div>
+
+                <div class="wrap-input100 rs2 validate-input" data-validate="mPesa Phone Number is required">
+                    <input class="input100" id="mpesaPhoneNumber" name="mpesaPhoneNumber" type="text">
+                    <span class="label-input100" id="mpesaPhoneNumber_text">Número do mPesa</span>
+                </div>
+
+                <div class="custom-select" data-validate="gender is required">
+                    <select class="form-control" id="gender">
+                        <option value="0"><span id="select_gender_text">Seleccione o seu sexo</span></option>
+                        <option value="m"><span id="male_text">Masculino</span></option>
+                        <option value="f"><span id="female_text">Femenino</span></option>
+                    </select>
+                </div>
+
+                <div class="custom-select" data-validate="City Province State is required">
+                    <select class="form-control" id="cityProvinceState">
+                        <option value="0" ><span id="select_cityProvinceState_text">Seleccione a sua província</span></option>
+                        <option value="mz-cd">Cabo Delgado</option>
+                        <option value="mz-ga">Gaza</option>
+                        <option value="mz-in">Inhambane</option>
+                        <option value="mz-mn">Manica</option>
+                        <option value="mz-mp">Maputo</option>
+                        <option value="mz-nm">Nampula</option>
+                        <option value="mz-ns">Niassa</option>
+                        <option value="mz-so">Sofala</option>
+                        <option value="mz-te">Tete</option>
+                        <option value="mz-za">Zambézia</option>
+                    </select>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" id="register-button">
+                        <span id="register_text">Registar</span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="js/validate_input.js"></script>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
